@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<!-- Service Details Tree View  -->
+	<record id="sales_service_details_tree" model="ir.ui.view">
+		<field name="name">sales.inno.service.details.tree</field>
+		<field name="model">inno.service.details</field>
+		<field name="arch" type="xml">
+			<tree string="Sales Service Details" class="">
+				<field name="name"/>
+				<field name="warranty_id"/>
+				<field name="partner_id"/>
+				<field name="product_id"/>
+				<field name="date_received"/>
+				<field name="return_date"/>
+				<field name="state"/>
+			</tree>
+		</field>
+	</record>
+
+	<!-- Service Details Form View -->
+	<record id="sales_service_details_form" model="ir.ui.view">
+		<field name="name">sales.inno.service.details.form</field>
+		<field name="model">inno.service.details</field>
+		<field name="arch" type="xml">
+			<form string="Sales Service Details">
+				<header>
+					<field name="state" widget="statusbar" statusbar_visible="registered,inservice,done,delivered"/>
+					<button name="action_state_process" string="Approve" state="inservice" type="object" class="btn-primary" attrs="{'invisible': [('state', '!=', 'registered')]}"/>
+					<button name="action_state_done" string="Service Done" state="done" type="object" class="btn-primary" attrs="{'invisible': [('state', '!=', 'inservice')]}"/>
+					<button name="action_state_deliver" string="Deliver Product" state="delivered" type="object" class="btn-primary" attrs="{'invisible': [('state', '!=', 'done')]}"/>
+					<button name="action_state_cancel" string="Cancel" type="object" class="btn-primary" attrs="{'invisible': [('state', 'in', ('delivered','done'))]}"/>
+
+				</header>
+				<sheet>
+					<!-- <div class="oe_right oe_button_box" name="button_box" position="inside">
+						<button name="action_warranty_task" type="object" class="oe_stat_button" icon="fa-tasks">
+							<field string="Task" name="task_count" widget="statinfo"/>
+						</button>
+					</div> -->
+					<xpath expr="//button[@name='toggle_active']" position="before">
+						<div class="oe_button_box" name="button_box">
+							<button name="send_msg" string="Whatsapp Message" type="object" class="oe_stat_button" icon="fa-whatsapp"/>
+						</div>
+					</xpath>
+					<div class="oe_title">
+						<h1>
+							<field name="name" readonly="1" required="True"/>
+						</h1>
+					</div>
+					<group>
+						<group>
+							<field name="warranty_id" domain="[('state','in',['inwarranty','toexpire'])]" attrs="{'readonly': [('state', '!=', 'registered')]}" required="True"/>
+							<field name="partner_id"/>
+							<field name="product_id" attrs="{'readonly': [('state', '!=', 'registered')]}" required="True" />
+							<!-- <field name="sno_id" attrs="{'readonly': [('state', '!=', 'registered')]}"/> -->
+						</group>
+						<group>
+							<field name="date_received" attrs="{'readonly': [('state', '!=', 'registered')]}"/>
+							<field name="return_date"/>
+							<field name="responsible_id"/>
+							<field name="warranty_expired" readonly="1"/>
+						</group>
+					</group>
+					<notebook>
+						<page string="Complaint Info">
+							<separator orientation="vertical"/>
+							<field name="complaint_note" placeholder="Describe the issue here..." attrs="{'readonly': [('state', '!=', 'registered')]}"/>
+						</page>
+						<page string="Service Note">
+							<separator orientation="vertical"/>
+							<field name="service_note" placeholder="Add service notes here..."/>
+						</page>
+					</notebook>
+				</sheet>
+				<div class="oe_chatter">
+					<field name="message_follower_ids" widget="mail_followers"/>
+					<field name="message_ids" widget="mail_thread"/>
+				</div>
+			</form>
+		</field>
+	</record>
+	<record id="sales_service_details_action" model="ir.actions.act_window">
+		<field name="name">Service Details</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">inno.service.details</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<field name="context">{}</field>
+		<field name="domain">[]</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+                    Create new service line here..</p>
+		</field>
+	</record>
+	<record id="whatsapp_res_partner" model="ir.ui.view">
+		<field name="name">res.partner.form</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="base.view_partner_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//button[@name='toggle_active']" position="before">
+				<div class="oe_button_box" name="button_box">
+					<button name="send_msg" string="Whatsapp Message" type="object" class="oe_stat_button" icon="fa-whatsapp"/>
+				</div>
+			</xpath>
+		</field>
+	</record>
+	<menuitem name="Service" id="sales_warranty_third_sub_menu" parent="inno_after_sales.sales_warranty_sub_menu" action="sales_service_details_action" />
+</odoo>

@@ -1,0 +1,14 @@
+<odoo>
+	<record id="warranty_sequence" model="ir.sequence">
+		<field name="name">Warranty Details</field>
+		<field name="code">inno.warranty.details</field>
+		<field name="prefix">ISG-WAR-%(y)s%(month)s-</field>
+		<field name="padding">4</field>
+	</record>
+	<record id="service_sequence" model="ir.sequence">
+		<field name="name">Service</field>
+		<field name="code">inno.service.details</field>
+		<field name="prefix">SERV-ISG-%(y)s%(month)s-</field>
+		<field name="padding">4</field>
+	</record>
+</odoo>

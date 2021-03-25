@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report id="report_warranty" string="Warranty Report" model="inno.warranty.details" report_type="qweb-pdf" name="inno_after_sales.report_warranty_detail" file="inno_after_sales.report_warranty_detail"/>
+    </data>
+</odoo>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<menuitem name="After Sales" id="sales_warranty_parent_menu"/>
+	<menuitem name="Warranty" id="sales_warranty_sub_menu" parent="sales_warranty_parent_menu"/>
+	<menuitem name="Transaction" id="product_id_menu" parent="sales_warranty_parent_menu"/>
+	<menuitem name="Project" id="project_id_menu" parent="sales_warranty_parent_menu"/>
+	<menuitem name="Sales Service" id="service_id_menu" parent="sales_warranty_parent_menu"/>
+
+	<!-- Sales Warranty Tree View  -->
+	<record id="sales_warranty_details_tree" model="ir.ui.view">
+		<field name="name">sales.inno.warranty.details.tree</field>
+		<field name="model">inno.warranty.details</field>
+		<field name="arch" type="xml">
+			<tree string="Sales Warranty Details" colors="red:pasang_id== 'jakarta';green:pasang_id=='medan'">
+				<field name="name"/>
+				<field name="product_id"/>
+				<field name="sale_id"/>
+				<field name="partner_id"/>
+				<field name="sno_id"/>
+				<field name="purchase_date"/>
+				<field name="warranty_end_date"/>
+				<field name="qty_id"/>
+				<field name="pasang_id"/>
+				<!-- <field name="checklist_progress" widget="progressbar"/> -->
+				<field name="state"/>
+			</tree>
+		</field>
+	</record>
+
+	<!-- Sales Warranty Form View -->
+	<record id="sales_warranty_details_form" model="ir.ui.view">
+		<field name="name">sales.inno.warranty.details.form</field>
+		<field name="model">inno.warranty.details</field>
+		<field name="arch" type="xml">
+
+			<form string="Sales Warranty Details">
+				<header>
+					<!-- <button name="action_endcampaigns" string="End Campaign" type="object" class="btn-primary" attrs="{'invisible': [('state', '!=', 'toexpire')]}"/>
+					<button name="action_woncampaigns" string="Won Campaign" type="object" class="btn-primary" attrs="{'invisible': [('state', '!=', 'toexpire')]}"/> -->
+					<button name="%(action_warranty_extention)d" string="Extend Warranty" type="action" class="btn-primary" />
+					<field name="state" widget="statusbar" statusbar_visible="inwarranty,toexpire,expired"/>
+				</header>
+				<sheet>
+					<div>
+						<!-- <div class="oe_right oe_button_box" name="button_box">
+							<button name="action_warranty_task" type="object" class="oe_stat_button" icon="fa-tasks">
+								<field string="Task" name="task_count" widget="statinfo"/>
+							</button>
+						</div>
+						<div class="oe_right oe_button_box" name="button_box">
+							<button name="action_warranty_campaign" type="object" class="oe_stat_button" icon="fa-clone">
+								<field string="Campaign" name="campaign_count" widget="statinfo"/>
+							</button>
+						</div> -->
+						<div class="oe_right oe_button_box" name="button_box" position="inside">
+							<button name="action_warranty_services" type="object" class="oe_stat_button" icon="fa-life-ring">
+								<field string="Services" name="service_count" widget="statinfo"/>
+							</button>
+						</div>
+					</div>
+					<div class="oe_title">
+						<h1>
+							<field name="name" readonly="1" required="True"/>
+						</h1>
+					</div>
+					<group>
+						<group>
+							<field name="sale_id"/>
+							<field name="sno_id"/>
+							<field name="partner_id" required="True" readonly="False"/>
+							<field name="product_id" required="True" attrs="{'readonly': [('state', '!=', 'inwarranty')]}"/>
+							<field name="manufacturing_id"/>
+							<field name="bom_id"/>
+						</group>
+						<group>
+							<field name="purchase_date"/>
+							<field name="warranty_end_date"/>
+							<field name="responsible_id"/>
+							<field name="pasang_id"/>
+						</group>
+					</group>
+					<notebook>
+						<page string="Component" name="part_request_line">
+							<field name="part_request_ids" mode="tree">
+								<form string="Component">
+									<group>
+										<group>
+											<field name="product_id" />
+											<label for="quantity" />
+											<div class="o_row">
+												<field name="quantity"/>
+												<field name="uom_id" options="{'no_open':True,'no_create':True}" groups="product.group_uom"/>
+											</div>
+										</group>
+										<group>
+											<field name="description" />
+											<!-- <field name="serial_number_ids"/> -->
+										</group>
+									</group>
+								</form>
+								<tree string="Component" editable="bottom">
+									<field name="part_request_id" invisible="True" />
+									<field name="product_id" />
+									<field name="description" />
+									<field name="serial_number_pabrik"/>
+									<field name="quantity" />
+									<field name="uom_id" />
+								</tree>
+							</field>
+						</page>
+						<!-- <page string="Component">
+							<field name="sparepart_ids">
+								<tree string="Component" editable="bottom">
+									<field name="product_id"/>
+									<field name="pabrik_id"/>
+									<field name="qty_id"/>
+									<field name="purchase_date"/>
+									<field name="warranty_end_date"/>
+									<field name="status_id"/>
+								</tree>
+								<form>
+									<group>
+										<field name="product_id"/>
+										<field name="pabrik_id"/>
+										<field name="qty_id"/>
+										<field name="purchase_date"/>
+										<field name="warranty_end_date"/>
+										<field name="status_id"/>
+									</group>
+								</form>
+							</field>
+						</page> -->
+						<page string="Pre-delivery">
+							<group>
+								<group string="Checklist">
+									<field name="warranty_task_id" widget="one2many_checkbox"/>
+								</group>
+								<!-- <group string="Completed">
+									<field name="warranty_checklist_progress" widget="percentpie"/>
+									<field name="image"/>
+								</group> -->
+							</group>
+						</page>
+						<!-- <page string="Pre-deliveryII">
+							<group>
+								<group string="Checklist">
+									<field name="grouped_task" eval="False"/>
+	                    			<label for="grouped_task"/>
+								</group>
+								<group>
+									<field name="parent_task_id" attrs="{'invisible': [('','!=', 1)]}" style="width: 35%"/>
+									<field name="group_product_task" widget="many2many_tags" attrs="{'invisible': [('grouped_task','!=',True)]}" style="width:35%"/>
+								</group>
+							</group>
+						</page> -->
+						<page string="Internal Reference">
+							<separator orientation="vertical"/>
+							<field name="internal_reference" placeholder="Add internal reference notes here..." />
+						</page>
+						<!-- <page string="Campaign">
+							<group>
+								<group>
+									<field name="not_interested" readonly="1"/>
+									<field name="won_campaign" readonly="1"/>
+								</group>
+								<group>
+									<field name="new_sales_id" attrs="{'invisible': [('won_campaign', '!=', True)]}" />
+									<field name="new_invoice_id" attrs="{'invisible': [('won_campaign', '!=', True)]}" />
+								</group>
+							</group>
+						</page> -->
+
+					</notebook>
+				</sheet>
+				<div class="oe_chatter">
+					<field name="message_follower_ids" widget="mail_followers"/>
+					<field name="message_ids" widget="mail_thread"/>
+				</div>
+			</form>
+		</field>
+	</record>
+
+	<record model="ir.actions.act_window" id="action_mrp_part_request">
+		<field name="name">Serial Number</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">inno.part.request.line</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="sales_warranty_details_action" model="ir.actions.act_window">
+		<field name="name">Warranty</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">inno.warranty.details</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<field name="help" type="html">
+			<p class="oe_view_nocontent_create">
+                    Create a warranty here.</p>
+		</field>
+	</record>
+
+	<menuitem name="Warranty" id="sales_warranty_second_sub_menu" parent="sales_warranty_sub_menu" action="sales_warranty_details_action" />
+	<menuitem name="Product" id="product_menu_catalog" parent="product_id_menu" action="product.product_template_action" sequence="4" groups="sales_team.group_sale_salesman" />
+	<menuitem name="Customer" id="customer_menu_catalog" parent="product_id_menu" action="base.action_partner_form" sequence="5" groups="sales_team.group_sale_salesman" />
+	<menuitem name="Quotations" id="menu_sale_quotations" action="sale.action_quotations" parent="inno_after_sales.product_id_menu" sequence="11"/>
+	<menuitem name="Sales Order" id="menu_sale_order" action="sale.action_orders" parent="inno_after_sales.product_id_menu" sequence="12" />
+	<menuitem name="Serial Number Pabrik" id="menu_serial_pabrik" parent="inno_after_sales.product_id_menu" sequence="13" action="serial_pabrik.serial_pabrik_action"/>
+</odoo>

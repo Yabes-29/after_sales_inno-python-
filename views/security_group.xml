@@ -1,0 +1,61 @@
+<odoo>
+    <data>
+        <record id="group_warranty_manager" model="res.groups">
+            <field name="name">Warranty Manager</field>
+        </record>
+        
+        <record id="group_warranty_user" model="res.groups">
+            <field name="name">Warranty user</field>
+        </record>
+
+        <record id="group_warranty_digital" model="res.groups">
+            <field name="name">Warranty Digital</field>
+        </record>
+
+        <!-- Akses untuk Manager --> 
+        <!-- <record id="warranty_editable_responsible" model="ir.rule"> -->
+            <!-- <field name="name">Hanya bisa di edit oleh responsible</field> -->
+            <!-- <field name="model_id" ref="model_service_details"/> -->
+            <!-- <field name="groups" eval="[(4, ref('group_warranty_manager') )]"/> -->
+            <!-- <field name="domain_force">[('responsible_id','=', user.id)]</field> -->
+           
+            <!-- <field name="perm_read" eval="1"/>  -->
+            <!-- <field name="perm_write" eval="1"/>  -->
+            <!-- <field name="perm_unlink" eval="1"/>  -->
+            <!-- <field name="perm_create" eval="1"/>  -->
+
+        <!-- </record> -->
+        
+        <!-- Akses untuk User -->
+        <!-- <record id="warranty_editable_responsible" model="ir.rule"> -->
+            <!-- <field name="name">Hanya bisa di edit oleh responsible</field> -->
+            <!-- <field name="model_id" ref="model_service_details"/> -->
+            <!-- <field name="groups" eval="[(4, ref('group_warranty_user') )]"/> -->
+            <!-- <field name="domain_force">[('responsible_id','=', user.id)]</field> -->
+           
+            <!-- <field name="perm_read" eval="1"/>  -->
+            <!-- <field name="perm_write" eval="1"/>  -->
+            <!-- <field name="perm_unlink" eval="0"/>  -->
+            <!-- <field name="perm_create" eval="0"/>  -->
+
+        <!-- </record> -->
+
+        <!-- Akses untuk Digital -->
+        <!-- <record id="warranty_editable_responsible" model="ir.rule"> -->
+            <!-- <field name="name">Hanya bisa di edit oleh responsible</field> -->
+            <!-- <field name="model_id" ref="model_service_details", ref="mpdel_warranty_details"/> -->
+            <!-- <field name="groups" eval="[(4, ref('group_warranty_digital') )]"/> -->
+            <!-- <field name="domain_force">[('responsible_id','=', user.id)]</field> -->
+           
+            <!-- <field name="perm_read" eval="1"/>  -->
+            <!-- <field name="perm_write" eval="1"/>  -->
+            <!-- <field name="perm_unlink" eval="0"/>  -->
+            <!-- <field name="perm_create" eval="1"/>  -->
+
+        <!-- </record>     -->
+    
+    
+    
+    
+    </data>
+</odoo>

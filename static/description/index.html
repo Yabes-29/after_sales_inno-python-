@@ -1,0 +1,208 @@
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+        <div class="oe_span12">
+            <h2 class="oe_slogan" style="color:#875A7B">Sales Warranty</h2>
+        </div>
+     
+	 <p class="oe_mt32">
+ 	<strong>Sales Warranty(inno_after_sales)</strong> is an Odoo app from BroadTech which helps to maintain the warranty details and service information of products sold to customers and thus smoothen the after sales activities. 	
+	 </p>
+	 <p>
+	 
+	  Warranty records are created manually by the system manager. The warranty records maintain reference to the sale order and the invoice related to the product. 
+	  Each Warranty record begins its lifecycle from the "In Warranty" stage. Warranty End date captured in the warranty form is the key element which determines the lifecycle of the warranty. The system checks the date on daily basis and changes the status of the record automatically as it approaches the expiry date
+	 </p>
+     
+     <div class="oe_span11 oe_centered">
+        <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="image1.png">
+        </div>
+    </div>
+     
+    </div>
+</section>
+
+<section class="oe_container ">
+    <div class="oe_row oe_spaced">
+       
+	 <p>
+	  "To Expire" and "Expired" are the two other stages of the warranty record. One month before the warranty end date, the record becomes  "To Expire". 
+	 </p>
+     
+     <div class="oe_span11 oe_centered">
+        <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="image2.png">
+        </div>
+    </div>
+     
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+       
+	 <p>
+On the warranty end date, it becomes "Expired". The automatic stage transition of the record is managed with the help of cron job (Scheduler). 	 </p>
+     
+     <div class="oe_span11 oe_centered">
+        <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="image3.png">
+        </div>
+    </div>
+     
+    </div>
+</section>
+
+
+
+<section class="oe_container ">
+    <div class="oe_row oe_spaced">
+       
+	 <p>
+The "To Expire" stage of warranty records are critical for sales team. They have to campaign respective customers and try to extend the warranty of the products by making additional payment. The system helps to manage such campaign more efficiently by allowing the salesman to mark the outcome of the campaign. If the customer is not at all interested in extending the service, the salesman can use the button "End Campaign" which in turn flags the customer as "Not Interested". 
+This will increase efficiency of sales team by filtering out the leads that won't work out. 
+	 </p>
+     
+     <div class="oe_span11 oe_centered">
+        <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="image4.png">
+        </div>
+    </div>
+     
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+	 <p>
+If the salesman wins the campaign, he can use the button "Won Campaign".  This will again flag the record and introduce new fields in the form, to log the campaign/sales details. He can leave the sales reference as text. If the salesman has already issued a sale order or invoice, that information also can be marked here.
+  </p>      
+     <div class="oe_span11 oe_centered">
+        <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="image5.png">
+        </div>
+    </div>
+     
+    </div>
+</section>
+
+<section class="oe_container ">
+    <div class="oe_row oe_spaced">
+       
+	 <p>
+Based on the sales offer, the manager can extend the warranty of the product using the "Extend Warranty" button. The action will update  the "Warranty End" . It also changes the stage of the record, back to "In Warranty".
+	 </p>
+     
+     <div class="oe_span11 oe_centered">
+        <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="image6.png">
+        </div>
+    </div>
+     
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+     <h3 class="oe_slogan" style="color:#875A7B">Service Records</h3>
+	 <p>
+	 Service records can be created directly from the service details menu or it can be created using the "Services" link in the warranty record. 
+	 The link displays all the existing service records under the warranty. The record captures  warranty details and product information along with the received date. 
+	 The executive who receives the product and creates the service record fills up complaint information.
+  </p>      
+  <p>
+     The newly created service record will be in "Registered" state by default. In the registered state two buttons shall be available. "Process" and "Replace Product". 
+     </p>
+     <div class="oe_span11 oe_centered">
+        <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="image7.png">
+        </div>
+    </div>
+     
+    </div>
+</section>
+
+
+<section class="oe_container ">
+    <div class="oe_row oe_spaced">
+       
+	 <p class="oe_row oe_spaced">
+	 The process button would move the product for service and the state of the record will become "In Service".
+	 </p>
+     
+     <div class="oe_span11 oe_centered">
+        <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="image8.png">
+        </div>
+    </div>
+     
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+	 <p>
+From "In Service" the record moves to "Service Done" state using the button "Service Done" and later to "Delivered" state using "Deliver Product" button.</p>
+     <div class="oe_span11 oe_centered">
+        <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="image9.png">
+        </div>
+    </div>
+    </div>
+</section>
+
+
+<section class="oe_container ">
+    <div class="oe_row oe_spaced">
+	 <p>
+The "Replace Product" in the service page is used to issue a replace for the product if it can't be repaired.  </p>      
+     <div class="oe_span11 oe_centered">
+        <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="image10.png">
+        </div>
+    </div>
+     
+    </div>
+</section>
+
+
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_spaced">
+	 <p>
+The replace action will close the service record and mark it "Delivered". It also sets the status of the warranty record as expired. The executive can issue a new warranty record related to the product.
+</p>
+     <div class="oe_span11 oe_centered">
+        <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="image11.png">
+        </div>
+    </div>
+     
+    </div>
+</section>
+
+
+<section class="oe_container ">
+    <div class="oe_row oe_spaced">
+     <h3 class="oe_slogan" style="color:#875A7B">Campaign Records</h3>
+	 <p>
+Campaign Records can be accessed directly through the menu "Campaign Details" or using the link "Campaigns" in the warranty record. These records keep history of sale attempts made by sales persons to extend the warranty of the product. The information can be used as input for improving the sales strategies as well as quality of services. 
+  </p>      
+     <div class="oe_span11 oe_centered">
+        <div class="oe_row_img oe_centered">
+                <img class="oe_picture oe_screenshot" src="image12.png">
+        </div>
+    </div>
+    
+    <div class="oe_span12 oe_spaced">
+        <p class='oe_mt32 oe_spaced'>
+    For any assistance please feel free to contact us: contact@broadtech-innovations.com
+     </p>
+        </div>
+       
+    
+    </div>
+</section>
+
+

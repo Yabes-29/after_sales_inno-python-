@@ -1,0 +1,46 @@
+<odoo>
+	<data>
+		<record id="view_warranty_sparepart_tree" model="ir.ui.view">
+			<field name="name">inno.warranty.sparepart.tree</field>
+			<field name="model">inno.warranty.sparepart</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Spare part">
+					<field name="name"/>
+					<field name="pabrik_id"/>
+					<field name="qty_id"/>
+					<field name="purchase_date"/>
+					<field name="warranty_end_date"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>
+		<record id="view_warranty_sparepart_form" model="ir.ui.view">
+			<field name="name">inno.warranty.sparepart.form</field>
+			<field name="model">inno.warranty.sparepart</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Warranty">
+					<group>
+						<field name="name"/>
+						<field name="pabrik_id"/>
+						<field name="qty_id"/>
+						<field name="purchase_date"/>
+						<field name="warranty_end_date"/>
+						<field name="state"/>
+					</group>
+					<notebook>
+						<page string="Order Line ">
+
+						</page>
+						<page string="Description">
+							<field name="description"/>
+						</page>
+
+					</notebook>
+
+				</form>
+			</field>
+		</record>
+	</data>
+</odoo>

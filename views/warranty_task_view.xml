@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_warranty_tasks_tree" model="ir.ui.view">
+        <field name="name">inno.warranty.task.tree</field>
+        <field name="model">inno.warranty.task</field>
+        <field name="arch" type="xml">
+            <tree string="Pre-Delivery">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_warranty_tasks_form" model="ir.ui.view">
+        <field name="name">inno.warranty.task.form</field>
+        <field name="model">inno.warranty.task</field>
+        <field name="arch" type="xml">
+            <form string="Pre-Delivery">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="warranty_tasks_action" model="ir.actions.act_window">
+        <field name="name">Pre-Delivery</field>
+        <field name="res_model">inno.warranty.task</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_warranty_tasks_tree"/>
+    </record>
+
+    <menuitem id="menu_warranty_tasks" name="Pre-Delivery" parent="inno_after_sales.product_id_menu" sequence="8" action="inno_after_sales.warranty_tasks_action"/>
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="warranty_extention" model="ir.ui.view">
+            <field name="name">Extend Warranty</field>
+            <field name="model">warranty.extention</field>
+            <field name="arch" type="xml">
+                <form string="Warranty Extention">
+                    	<group>
+	                    	<group>
+	                    		<field name="extended_date" required="True"/>
+	                    	</group>
+	                    	<group>
+	                    	</group>
+                    	</group>
+                    	<footer>
+                        <button name="warrantyextended" string="Confirm" type="object"
+                            class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+         <record id="action_warranty_extention" model="ir.actions.act_window">
+            <field name="name">Extend Warranty</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">warranty.extention</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>  	
+</odoo>

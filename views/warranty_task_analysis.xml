@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_warranty_tasks_analysis_tree" model="ir.ui.view">
+        <field name="name">inno.warranty.task.history.tree</field>
+        <field name="model">inno.warranty.task.history</field>
+        <field name="arch" type="xml">
+            <tree string="Pre-Delivery Analysis" create="false">
+                <field name="warranty_id"/>
+                <field name="warranty_task_id"/>
+                <field name="done"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_warranty_tasks_analysis_search" model="ir.ui.view">
+        <field name="name">inno.warranty.task.history.search</field>
+        <field name="model">inno.warranty.task.history</field>
+        <field name="arch" type="xml">
+            <search string="Search Pre-Delivery">
+                <field name="warranty_id"/>
+                <field name="warranty_task_id"/>
+                <field name="done"/>
+                <group expand="0" string="Group By">
+                    <filter string="Warranty" name="group_by_warranty" context="{'group_by': 'warranty_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="warranty_tasks_analysis_action" model="ir.actions.act_window">
+        <field name="name">Pre-Delivery Analysis</field>
+        <field name="res_model">inno.warranty.task.history</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,search</field>
+        <field name="view_id" ref="view_warranty_tasks_analysis_tree"/>
+        <field name="search_view_id" ref="view_warranty_tasks_analysis_search"/>
+        <field name="context">{'search_default_group_by_warranty':1}</field>
+    </record>
+
+    <menuitem id="menu_warranty_tasks_analysis" name="Pre-Delivery Analysis" parent="inno_after_sales.product_id_menu" sequence="11" action="inno_after_sales.warranty_tasks_analysis_action"/>
+</odoo>
